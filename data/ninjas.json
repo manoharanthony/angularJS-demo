@@ -1,0 +1,43 @@
+[{
+	"name": "Yoshi",
+	"belt": "orange",
+	"rate": 50,
+	"available": true,
+	"thumb": "content/img/1.png"
+}, {
+	"name": "Ryu",
+	"belt": "yellow",
+	"rate": 30,
+	"available": true,
+	"thumb": "content/img/2.jpg"
+}, {
+	"name": "Crystal",
+	"belt": "green",
+	"rate": 40,
+	"available": true,
+	"thumb": "content/img/3.jpeg"
+}, {
+	"name": "Shaun",
+	"belt": "black",
+	"rate": 90,
+	"available":false,
+	"thumb": "content/img/4.png"
+}, {
+	"name": "Cloud",
+	"belt": "blue",
+	"rate": 80,
+	"available": true,
+	"thumb": "content/img/5.png"
+}, {
+	"name": "Cowboy",
+	"belt": "green",
+	"rate": 70,
+	"available": false,
+	"thumb": "content/img/6.jpeg"
+}, {
+	"name": "Flippy",
+	"belt": "black",
+	"rate": 100,
+	"available": true,
+	"thumb": "content/img/7.jpeg"
+}]
