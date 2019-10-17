@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myNinjaApp">
+  <head>
+    <title>AngularTest</title>
+    <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+    <script src="app/lib/angular.min.js"></script>
+    <script src="app/app.js"></script>
+  </head>
+  <!-- <body ng-init="ninjas=['yoshi','crystal','ryu','shaun']">
+       ng-init="meats=['ham','pork','beef']
+    <input type="text" ng-model="favMeat" placeholder="enter your fav meat" >
+    <p>Your fav meat is: {{favMeat}}</p>
+    <p>You are like {{meats[0]}} and you also like {{meats[1]}}</p>
+    <ul>
+      <li>{{ninjas[3]}}</li>
+      <li ng-repeat="ninja in ninjas">{{ninja}}</li>
+    </ul>
+ 
+    -->
+
+  <body>
+    <!-- <ng-include src="'header.html'"></ng-include> -->
+    <header ng-include="'header.html'"></header>
+    <div class="content">
+
+      <div ng-controller="NinjaController">
+        <button ng-click="order = 'name '">Order by Name</button>
+        <button ng-click="order = 'belt'">Order by Belt</button>
+        <input type="text" ng-model="search" placeholder="search for ninja">
+        <ul>
+          <li ng-repeat="ninja in ninjas | orderBy: order | filter: search" ng-show="ninja.available">
+            <img ng-src="{{ninja.thumb}}" alt="" style="margin: -12px 10px 0 0; float: left; width: 50px;">
+            <h3>{{ninja.name}} - {{ninja.rate | currency}}</h3>
+            <div class="remove" ng-click="removeNinja(ninja)">x</div>
+            <span class="belt" style="background: {{ninja.belt}}"> {{ninja.belt}} belt</span>
+          </li>
+        </ul>
+
+        <form ng-submit="addNewNinja()">
+          <input type="text" placeholder="name" ng-model="newNinja.name">
+          <input type="text" placeholder="belt" ng-model="newNinja.belt">
+          <input type="text" placeholder="rate" ng-model="newNinja.rate">
+          <!-- <button type="submit">Submit</button> --> 
+          <input type="submit" value="Add New Ninja">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
