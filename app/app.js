@@ -1,6 +1,8 @@
 var myNinjaApp = angular.module('myNinjaApp',['ngRoute', 'ngAnimate']);
 
-   myNinjaApp.config(['$routeProvider', function($routeProvider){
+   myNinjaApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+      // $locationProvider.html5Mode(true);
+
       $routeProvider
       .when('/home', {
          templateUrl: 'views/home.html',
@@ -9,7 +11,12 @@ var myNinjaApp = angular.module('myNinjaApp',['ngRoute', 'ngAnimate']);
 
       .when('/contact', {
          templateUrl: 'views/contact.html',
-         // controller: 'NinjaController'
+         controller: 'ContactController'
+      })
+
+      .when('/contact-success', {
+         templateUrl: 'views/contact-success.html',
+         controller: 'ContactController'
       })
 
       .when('/directory', {
@@ -49,6 +56,7 @@ myNinjaApp.directive('randomNinja', [function(){
 }]);
 
  myNinjaApp.controller('NinjaController', ['$scope', '$http', function($scope, $http){
+
 
    $scope.removeNinja = function(ninja){
       var removedNinja = $scope.ninjas.indexOf(ninja);
@@ -145,4 +153,12 @@ myNinjaApp.directive('randomNinja', [function(){
       console.log(error, 'can not get data.');
    });
 
+}]);
+
+
+myNinjaApp.controller('ContactController', ['$scope', '$location', function($scope, $location){
+
+   $scope.sendMessage = function(){
+      $location.path('/contact-success');
+   };
 }]);

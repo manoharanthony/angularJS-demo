@@ -1,10 +1,21 @@
 <div class="content">
     {{contact}}
-        <form name="contactForm" novalidate>
+        <form name="contactForm" ng-submit="sendMessage()" novalidate>
          <input type="text" placeholder="name" name="name" ng-modal="contact.name" ng-required="true"/>
+         <div ng-show="contactForm.name.$touched && contactForm.name.$invalid" >
+             <small class="" style="color: red;display: block;text-align: center;">Enter a valid name</small>
+         </div>
+         <!-- <span>
+             $pristine - {{contactForm.name.$pristine}},
+             $dirty - {{contactForm.name.$dirty}},
+             $untouched - {{contactForm.name.$untouched}},
+             $touched - {{contactForm.name.$touched}},
+             $invalid - {{contactForm.name.$invalid}},
+             $valid - {{contactForm.name.$valid}}, 
+         </span> -->
          <input type="email" placeholder="Email" name="email" ng-modal="contact.email" ng-required="true"/>
          <textarea placeholder="Your message" name="message" ng-modal="contact.message" ng-required="true" cols="52" rows="10"></textarea>
-         <input type="submit" value="Send" />
+         <input type="submit" value="Send" ng-disabled="contactForm.$invalid"/>
        </form>
      </div>
 <div>
@@ -14,7 +25,7 @@
         <li>ng-dirty - when form/input has been used</li>
         <li>ng-untouched - when input has not been touched</li>
         <li>ng-toucehed - when input has been touched</li>
-        <li>ng-valid - when a form field is ng-valid</li>
+        <li>ng-valid - when a form field is valid</li>
         <li>ng-invalid - when a form field is not valid</li>
     </ul>
 </div>
