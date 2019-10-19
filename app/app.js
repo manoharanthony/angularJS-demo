@@ -1,9 +1,15 @@
-var myNinjaApp = angular.module('myNinjaApp',['ngRoute']);
+var myNinjaApp = angular.module('myNinjaApp',['ngRoute', 'ngAnimate']);
 
    myNinjaApp.config(['$routeProvider', function($routeProvider){
       $routeProvider
       .when('/home', {
-         templateUrl: 'views/home.html'
+         templateUrl: 'views/home.html',
+         controller: 'NinjaController'
+      })
+
+      .when('/contact', {
+         templateUrl: 'views/contact.html',
+         // controller: 'NinjaController'
       })
 
       .when('/directory', {
@@ -24,6 +30,24 @@ var myNinjaApp = angular.module('myNinjaApp',['ngRoute']);
 
 // myNinjaApp.controller
 
+myNinjaApp.directive('randomNinja', [function(){
+   return{
+      restrict:'E',
+      scope: {
+         ninjas: '=',
+         title: '='
+      },
+      // template: '<img ng-src="{{ninjas[random].thumb}}">', 
+      templateUrl: 'views/random.html',
+      transclude: true,
+      replace: true,
+      controller: function($scope){
+         $scope.random = Math.floor(Math.random() * 4); 
+      }
+   };
+
+}]);
+
  myNinjaApp.controller('NinjaController', ['$scope', '$http', function($scope, $http){
 
    $scope.removeNinja = function(ninja){
@@ -43,6 +67,12 @@ var myNinjaApp = angular.module('myNinjaApp',['ngRoute']);
       $scope.newNinja.belt = "";
       $scope.newNinja.rate = "";
    };
+
+   $scope.removeAll = function(){
+      $scope.ninjas = [];
+
+   };
+   
    // $scope.message = "Hey y'all"
 
   //  $scope.ninjas= ['crystal','ryu','yoshi','shaun'];
