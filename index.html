@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myNinjaApp">
   <head>
-    <base href="/">
+    <base href="/" />
     <title>AngularTest</title>
-    <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="content/css/styles.css" rel="stylesheet" type="text/css" /> -->
+    <!-- Sass -->
+    <link rel="stylesheet" href="dist/css/main.css" />
+    <!-- Sass -->
     <script src="app/lib/angular.min.js"></script>
     <script src="app/lib/angular-route.min.js"></script>
     <script src="app/lib/angular-animate.min.js"></script>
@@ -21,10 +24,13 @@
  
     -->
 
-  <body>
+  <body class="light">
     <!-- <ng-include src="'header.html'"></ng-include> -->
     <header ng-include="'header.html'"></header>
     <main ng-view></main>
-
+    <div class="main">
+      <p class="main-paragraph1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, sequi illo neque accusamus in eos totam iste aliquam! Repellat necessitatibus, eaque itaque illo perferendis non quisquam ipsa iure enim voluptate voluptatum cumque veniam, maxime dolor unde dolorum molestiae reprehenderit amet optio. Ab recusandae id animi ratione accusamus harum eum dicta?</p>
+      <p class="main-paragraph2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque minima voluptatum perferendis cupiditate consequuntur amet aliquam possimus, repudiandae eius facilis impedit non consequatur veritatis distinctio, laudantium similique cumque? Cum explicabo facilis nisi reiciendis sequi ratione eius modi! Expedita, minus dicta.</p>
+    </div>
   </body>
 </html>

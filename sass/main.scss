@@ -1,0 +1,70 @@
+@import './resets';
+@import './variables';
+
+// Function
+@function weight($weight-name){
+    @return map-get($font-weights, $weight-name);
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+// Mixins
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin theme($light-theme:true){
+    @if $light-theme{
+        background: lighten($primary-color, 100%);
+        color: darken($text-color, 100%);
+    }
+}
+
+@mixin mobile{
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+body {
+    background: $primary-color;
+    color: $text-color;
+    font-weight: map-get($font-weights, bold);
+}
+
+.main{
+    @include flexCenter(row);
+    width: 80%;
+    margin: 0 auto;
+
+    // .main-paragraph{
+    //     font-weight: map-get($font-weights, medium );
+    // }
+
+    #{&}-paragraph1{
+        // font-weight: map-get($font-weights, medium );
+        font-weight: weight(regular);
+
+        
+        &:hover{
+            color: red;
+        }
+    }
+
+    #{&}-paragraph2{
+        @extend .main-paragraph1;
+
+        &:hover{
+            color: $secondary-color;
+        }
+    }
+
+    @include mobile{
+        flex-direction: column;
+    }
+}
+
+.light{
+    @include theme($light-theme:true);
+}
